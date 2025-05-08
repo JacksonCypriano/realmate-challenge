@@ -129,11 +129,15 @@ class WebhookView(APIView):
                 return Response({"success": "Conversa criada com sucesso.", "id": conversation.id}, status=status.HTTP_201_CREATED)
 
             elif event_type == "NEW_MESSAGE":
+                message_id = data.get("id")
                 direction = data.get("direction")
                 content = data.get("content")
                 conversation_id = data.get("conversation_id")
 
                 missing_fields = []
+
+                if not message_id:
+                    missing_fields.append("id")
 
                 if not direction:
                     missing_fields.append("direction")
@@ -155,7 +159,8 @@ class WebhookView(APIView):
                 if conversation.status == "CLOSED":
                     return Response({"error": "A conversa está encerrada e não pode receber novas mensagens."}, status=status.HTTP_400_BAD_REQUEST)
 
-                message = Message.objects.create(
+                Message.objects.create(
+                    id = id
                     direction=direction,
                     content=content,
                     conversation=conversation,
