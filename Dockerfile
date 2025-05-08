@@ -10,6 +10,8 @@ COPY . /app/
 
 RUN poetry install
 
+RUN mkdir -p /app/staticfiles
+
 RUN poetry run python manage.py collectstatic --noinput
 
 EXPOSE 8000
