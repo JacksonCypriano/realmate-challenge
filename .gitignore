@@ -276,10 +276,6 @@ poetry.lock
 *.sqlite3
 *.db
 
-# Django static files (gerados com collectstatic)
-staticfiles/
-static/
-
 # Media files (se você tiver uploads em dev)
 media/
 
