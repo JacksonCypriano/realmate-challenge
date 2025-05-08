@@ -163,17 +163,18 @@ class WebhookView(APIView):
                     timestamp=parse_webhook_timestamp(timestamp)
                 )
 
-                channel_layer = get_channel_layer()
-                logger.warning(f"Channel layer obtido: {channel_layer}")
-                logger.warning(f"Enviando para o grupo 'conversation_{conversation_id}' a mensagem: {content}")
+                if direction == "RECEIVED":
+                    channel_layer = get_channel_layer()
+                    logger.warning(f"Channel layer obtido: {channel_layer}")
+                    logger.warning(f"Enviando para o grupo 'conversation_{conversation_id}' a mensagem: {content}")
 
-                async_to_sync(channel_layer.group_send)(
-                    f'conversation_{conversation_id}',
-                    {
-                        'type': 'chat_message',
-                        'message': content
-                    }
-                )
+                    async_to_sync(channel_layer.group_send)(
+                        f'conversation_{conversation_id}',
+                        {
+                            'type': 'chat_message',
+                            'message': content
+                        }
+                    )
 
                 return Response({"success": "Mensagem registrada com sucesso."}, status=status.HTTP_201_CREATED)
 

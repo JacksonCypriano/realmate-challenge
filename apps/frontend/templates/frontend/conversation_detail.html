@@ -34,7 +34,7 @@
         <div class="messages">
             {% for msg in conversation.messages.all %}
                 <div class="message {{ msg.direction|lower }}">
-                    <p><strong>{{ msg.direction }}:</strong> {{ msg.content }}</p>
+                    <p><strong>{{ msg.get_direction_display }}:</strong> {{ msg.content }}</p>
                 </div>
             {% empty %}
                 <p>Nenhuma mensagem.</p>
