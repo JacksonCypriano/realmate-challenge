@@ -314,3 +314,6 @@ coverage.xml
 # System
 .DS_Store
 Thumbs.db
+
+/staticfiles/
+/staticfiles/*
