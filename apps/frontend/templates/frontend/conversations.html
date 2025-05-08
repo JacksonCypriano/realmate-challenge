@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversas</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Conversas</h1>
+        <ul class="conversation-list">
+            {% for conv in conversations %}
+                <li class="conversation-item">
+                    <a href="{% url 'conversation_detail' conv.id %}">
+                        <div class="conversation-info">
+                            <span class="conversation-name">Conversa #{{ conv.id }}</span>
+                            <span class="conversation-status {{ conv.status|lower }}">{{ conv.get_status_display }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% empty %}
+                <li class="conversation-item">Nenhuma conversa encontrada.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

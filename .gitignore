@@ -253,3 +253,68 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,windows,linux
 
 # Generated using ignr.py - github.com/Antrikshy/ignr.py
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+
+# Virtual environments (mesmo que Poetry evite criar, por segurança)
+.venv/
+.env/
+env/
+venv/
+
+# Poetry
+poetry.lock
+
+# VS Code settings
+.vscode/
+
+# SQLite database
+*.sqlite3
+*.db
+
+# Django static files (gerados com collectstatic)
+staticfiles/
+static/
+
+# Media files (se você tiver uploads em dev)
+media/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.bak
+*.swp
+*.tmp
+*.orig
+
+# Docker-specific
+**/__pycache__/
+docker-compose.override.yml
+*.env
+
+# Redis dump file (se for persistido no host, dependendo da config)
+dump.rdb
+
+# Pytest and test output
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# IDEs / Editors
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System
+.DS_Store
+Thumbs.db
