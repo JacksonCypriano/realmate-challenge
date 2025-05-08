@@ -160,7 +160,7 @@ class WebhookView(APIView):
                     return Response({"error": "A conversa está encerrada e não pode receber novas mensagens."}, status=status.HTTP_400_BAD_REQUEST)
 
                 Message.objects.create(
-                    id = id
+                    id = message_id,
                     direction=direction,
                     content=content,
                     conversation=conversation,
